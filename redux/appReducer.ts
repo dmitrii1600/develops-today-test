@@ -3,16 +3,23 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { IState } from '../interfaces';
 import { AnyAction } from 'redux';
 
-const initialState: IState = {
+export const initialState: IState = {
     posts: [],
-    currentPost: {},
+    currentPost: {
+        title: null,
+        body: null,
+        id: null,
+    },
     error: false,
 };
 
 const appReducer = (state = initialState, action: AnyAction) => {
     switch (action.type) {
         case HYDRATE:
-            return { ...state, ...action.payload.app };
+            return {
+                ...state,
+                ...action.payload.app,
+            };
         case SET_POSTS: {
             return {
                 ...state,

@@ -9,6 +9,7 @@ const instance = axios.create({
 });
 
 interface IApi {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: (...args: any[]) => Promise<any>;
 }
 

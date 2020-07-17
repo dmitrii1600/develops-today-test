@@ -1,8 +1,8 @@
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
 import { api } from '../services/api';
 import { IPost, IState } from '../interfaces';
 import { ActionTypes } from './types';
-import { ThunkAction } from 'redux-thunk';
-import { Action } from 'redux';
 
 export const SET_POSTS = 'SET_POSTS';
 export const SET_CURRENT_POST = 'SET_CURRENT_POST';

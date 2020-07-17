@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ import { IPost, IState } from '../../interfaces';
 import { StyledButton } from './new';
 import { Card } from '@material-ui/core';
 
-const Post: React.FC = () => {
+const Post: NextPage = () => {
     const post: IPost = useSelector((state: IState) => getCurrentPost(state));
     const error: boolean = useSelector((state: IState) => getError(state));
     const router = useRouter();
@@ -21,12 +21,12 @@ const Post: React.FC = () => {
         <MainLayout title={'Blog | ' + post.title || 'Post'}>
             {!error ? (
                 <PostCard>
-                    <PostTitle>{post.title}</PostTitle>
+                    <PostTitle>{post.title || 'Oops, post title is empty :('}</PostTitle>
                     <hr />
-                    <PostBody>{post.body}</PostBody>
+                    <PostBody>{post.body || 'Oops, post body is empty :('}</PostBody>
                 </PostCard>
             ) : (
-                <EmptyPosts>Server error :(, try again later</EmptyPosts>
+                <ErrorInfo>Server error :(, try again later</ErrorInfo>
             )}
             <StyledButton onClick={() => router.back()}>Back to posts</StyledButton>
         </MainLayout>
@@ -62,7 +62,7 @@ const PostCard = styled(Card)`
     }
 `;
 
-const EmptyPosts = styled.div`
+const ErrorInfo = styled.div`
     font-size: 20px;
     margin: 5px;
 `;

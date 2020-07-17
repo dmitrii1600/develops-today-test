@@ -5,9 +5,9 @@ export interface IState {
 }
 
 export interface IPost {
-    title: string;
-    body: string;
-    id: number;
+    title: string | null;
+    body: string | null;
+    id: number | null;
     comments?: IComment[];
 }
 

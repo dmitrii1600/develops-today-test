@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
+import { Button } from '@material-ui/core';
 import { LayoutProps } from '../interfaces';
 
 export const MainLayout: React.FunctionComponent<LayoutProps> = ({

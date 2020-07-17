@@ -7,10 +7,11 @@ import { MainLayout } from '../../components/MainLayout';
 import { createPostThunk } from '../../redux/actions';
 import { getError } from '../../redux/selectors';
 import { IState } from '../../interfaces';
-import Button from '@material-ui/core/Button';
+import { Button } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import { NextPage } from 'next';
 
-const NewPostForm: React.FC = () => {
+const NewPostForm: NextPage = () => {
     const { register, handleSubmit, errors, reset } = useForm();
     const router = useRouter();
     const dispatch = useDispatch();
