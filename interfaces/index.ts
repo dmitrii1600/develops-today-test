@@ -1,6 +1,6 @@
 export interface IState {
-    posts: [];
-    currentPost: {};
+    posts: IPost[];
+    currentPost: IPost;
     error: boolean;
 }
 
@@ -17,3 +17,6 @@ export interface IComment {
     body: string;
 }
 
+export type LayoutProps = {
+    title?: string;
+};

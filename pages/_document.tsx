@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
+    //to SSR of styled components
     static async getInitialProps(ctx) {
         const sheet = new ServerStyleSheet();
         const originalRenderPage = ctx.renderPage;
@@ -31,7 +32,7 @@ export default class MyDocument extends Document {
             <Html>
                 <Head>
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+                        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                         rel="stylesheet"
                     />
                 </Head>

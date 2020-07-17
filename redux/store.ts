@@ -2,16 +2,15 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import appReducer from './appReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createWrapper } from 'next-redux-wrapper';
+import { createWrapper, MakeStore, Context } from 'next-redux-wrapper';
 
 const reducers = combineReducers({
     app: appReducer,
 });
 
-export type RootReducerType = typeof reducers;
+export type RootReducerType = ReturnType<typeof reducers>;
 
-export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+const makeStore: MakeStore<RootReducerType> = (ctx: Context) =>
+    createStore(reducers, undefined, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 
-const makeStore = () => store;
-
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper<RootReducerType>(makeStore, { debug: true });
